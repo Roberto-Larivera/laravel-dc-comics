@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ComicController;
 use Illuminate\Support\Facades\Route; 
 
 // Controllers
@@ -15,7 +16,10 @@ use App\Http\Controllers\Guest\MainController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', [MainController::class, 'index'])->name('home');
+
+Route::resource('comics', ComicController::class);
 
 // Route::get('/', function () {
 //     return view('home');
