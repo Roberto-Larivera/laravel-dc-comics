@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col">
                 <h1>
-                    Laravel DC Comics
+                    Laravel DC Comics | Comics
                 </h1>
             </div>
             <div class="col">

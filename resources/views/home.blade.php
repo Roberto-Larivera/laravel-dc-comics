@@ -17,6 +17,7 @@
             </div>
             <div class="col">
                 <a href="{{ route('comics.index') }}">Vedi tutti</a>
+                <a href="{{ route('comics.create') }}">Crea nuovo Comics</a>
             </div>
         </div>
        </div>
