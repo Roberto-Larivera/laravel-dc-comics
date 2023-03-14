@@ -16,7 +16,7 @@
                 </h1>
             </div>
             <div class="col">
-                <a href="{{ route('comics.index') }}">Torna indietro</a>
+                <a href="{{ route('home') }}">Torna indietro</a>
             </div>
         </div>
         <div class="row">
@@ -29,25 +29,8 @@
                     <li>
                         {{ $comic->title}}
                     </li>
-                    <li>
-                        {{ $comic->description}}
-                    </li>
-                    <li>
-                        {{ $comic->url}}
-                    </li>
-                    <li>
-                        {{ $comic->price}}
-                    </li>
-                    <li>
-                        {{ $comic->series}}
-                    </li>
-                    <li>
-                        {{ $comic->sale_date}}
-                    </li>
-                    <li>
-                        {{ $comic->type}}
-                    </li>
                 </ul>
+                <a href="{{ route('comics.show', $comic->id) }}">+ info</a>
             </div>
             @endforeach
         </div>

@@ -54,7 +54,11 @@ class ComicController extends Controller
      */
     public function show($id)
     {
-        //
+        $comic = Comic::findorFail($id);
+
+        return view('Admin.comics.show',[
+            'comic' => $comic
+        ]);
     }
 
     /**
