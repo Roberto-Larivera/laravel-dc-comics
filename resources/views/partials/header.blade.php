@@ -14,10 +14,16 @@
                             additional dc sites
                         </a>
 
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <ul class="dropdown-menu p-3">
+                            <li>
+                                <a href="{{ route('home') }}">home</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('comics.index') }}">comics</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('comics.create') }}">create</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

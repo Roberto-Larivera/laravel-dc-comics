@@ -1,6 +1,12 @@
 main {
     height: calc(100% - 150px);
 
+    .form_create{
+        label{
+            text-transform: capitalize;
+        }
+    }
+
     .text_home{
         font-size: 10rem;
     }
