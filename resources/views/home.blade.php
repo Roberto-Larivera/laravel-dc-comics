@@ -8,16 +8,12 @@
     {{-- segnaposto dentro body  --}}
 
     <main>
-       <div class="container">
+       <div class="container p-5">
         <div class="row">
-            <div class="col">
+            <div class="col text_home text-center">
                 <h1>
-                    Laravel DC Comics
+                    Welcome <br> to <br>Dc Comics
                 </h1>
-            </div>
-            <div class="col">
-                <a href="{{ route('comics.index') }}">Vedi tutti</a>
-                <a href="{{ route('comics.create') }}">Crea nuovo Comics</a>
             </div>
         </div>
        </div>

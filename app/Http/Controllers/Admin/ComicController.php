@@ -19,7 +19,8 @@ class ComicController extends Controller
         $comics = Comic::all();
 
         return view('Admin.comics.index',[
-            'comics' => $comics
+            'comics' => $comics,
+            'linkFooter' => config('footerLink')
         ]);
     }
 
@@ -30,7 +31,9 @@ class ComicController extends Controller
      */
     public function create()
     {
-        return view('Admin.comics.create');
+        return view('Admin.comics.create',[
+            'linkFooter' => config('footerLink')
+        ]);
     }
 
     /**
@@ -68,7 +71,8 @@ class ComicController extends Controller
         $comic = Comic::findorFail($id);
 
         return view('Admin.comics.show',[
-            'comic' => $comic
+            'comic' => $comic,
+            'linkFooter' => config('footerLink')
         ]);
     }
 

@@ -10,7 +10,7 @@
     {{-- Includiamo gli assets con la direttiva @vite --}}
     @vite('resources/js/app.js')
 </head>
-<body class="p-5">
+<body>
     @yield('body_css')
 
     @include('partials.header')
