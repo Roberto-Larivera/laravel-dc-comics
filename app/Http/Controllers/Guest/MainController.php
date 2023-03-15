@@ -5,16 +5,19 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+// Models
+use App\Models\Comic;
+
 class MainController extends Controller
 {
     public function index()
     {
-        return view(
-            'home',
-            [
-                
-                'linkFooter' => config('footerLink')
-            ]
-        );
+        $comics = Comic::all();
+
+        return view('home',[
+            'comics' => $comics,
+            'linkFooter' => config('footerLink')
+        ]);
     }
+
 }

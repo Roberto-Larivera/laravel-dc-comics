@@ -14,7 +14,7 @@
                             additional dc sites
                         </a>
 
-                        <ul class="dropdown-menu p-3">
+                        <ul class="dropdown-menu p-4">
                             <li>
                                 <a href="{{ route('home') }}">home</a>
                             </li>
