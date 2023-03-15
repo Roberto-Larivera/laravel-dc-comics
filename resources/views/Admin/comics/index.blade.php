@@ -33,9 +33,9 @@
                                         <a href="{{ route('comics.edit',$comic->id) }}" class="btn btn-warning">
                                             Aggiorna
                                         </a>
-                                        <a href="#" class="btn btn-danger">
-                                            ?
-                                        </a>
+                                        
+                                        @include('admin.comics.partials.delete')
+                                        
                                     </td>
                                 </tr>
                             @endforeach

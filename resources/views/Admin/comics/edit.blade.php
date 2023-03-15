@@ -62,9 +62,7 @@
                             <a href="{{ route('comics.index', $comic->id) }}" class="btn btn-outline-primary me-5">
                                 Torna indietro
                             </a>
-                            <a href="#nogo" class="btn btn-outline-danger">
-                                Elimina
-                            </a>
+                            @include('admin.comics.partials.delete')
                         </div>
                     </form>
                 </div>
