@@ -27,11 +27,11 @@
                                     <td>{{ $comic->title }}</td>
                                     <td>{{ $comic->type }}</td>
                                     <td>
-                                        <a href="{{ route('comics.show',$comic->id) }}" class="btn btn-primary">
-                                            Vedi
+                                        <a href="{{ route('comics.show',$comic->id) }}" class="btn btn-outline-primary">
+                                            <i class="fa-solid fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('comics.edit',$comic->id) }}" class="btn btn-warning">
-                                            Aggiorna
+                                        <a href="{{ route('comics.edit',$comic->id) }}" class="btn btn-outline-warning">
+                                            <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
                                         
                                         @include('admin.comics.partials.delete')

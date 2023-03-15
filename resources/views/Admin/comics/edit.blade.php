@@ -57,7 +57,7 @@
                             </p>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-warning me-4">Aggiorna</button>
+                            <button type="submit" class="btn btn-success me-4">Conferma</button>
 
                             <a href="{{ route('comics.index', $comic->id) }}" class="btn btn-outline-primary me-5">
                                 Torna indietro

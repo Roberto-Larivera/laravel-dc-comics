@@ -19,10 +19,10 @@
                                 <a href="{{ route('home') }}">home</a>
                             </li>
                             <li>
-                                <a href="{{ route('comics.index') }}">comics</a>
+                                <a href="{{ route('comics.index') }}">a-comics</a>
                             </li>
                             <li>
-                                <a href="{{ route('comics.create') }}">create</a>
+                                <a href="{{ route('comics.create') }}">a-create</a>
                             </li>
                         </ul>
                     </div>
@@ -48,10 +48,10 @@
                                 <a href="{{ route('home') }}">home</a>
                             </li>
                             <li>
-                                <a href="{{ route('comics.index') }}">comics</a>
+                                <a href="{{ route('comics.index') }}">a-comics</a>
                             </li>
                             <li>
-                                <a href="{{ route('comics.create') }}">create</a>
+                                <a href="{{ route('comics.create') }}">a-create</a>
                             </li>
 
                         </ul>
