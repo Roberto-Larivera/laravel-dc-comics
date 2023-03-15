@@ -1,6 +1,4 @@
 
-// EXAMPLE 
-/*
 @mixin button ($bord-color,$color,$bg-hover,$bg-active,$pad: 10px,$text: uppercase,$text-weight: 400,$bg: transparent,$bord-px: 2px) {
     padding: $pad;
     text-transform: $text;
@@ -23,5 +21,27 @@
     justify-content: $justi;
     align-items: $items;
 }
-*/
 
+@mixin listHeader (){
+    &{
+        li{
+            &.active a,
+                    &:hover a {
+                        color: $color_primary;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        font-weight: 900;
+                        color: $txt_link;
+                    }
+        }
+    }
+}
+
+@mixin imgCard (){
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 1;
+}

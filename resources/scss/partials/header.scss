@@ -1,0 +1,120 @@
+header {
+    // height: $height_header;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+    text-transform: uppercase;
+
+
+    .header_bar {
+        background-color: $color_primary;
+
+        span {
+            text-transform: uppercase;
+            color: $txt_light-primary;
+            font-size: .9rem;
+
+            span {
+                font-size: 50%;
+                vertical-align: super;
+            }
+        }
+
+        .dropdown {
+            a.dropdown-toggle {
+                color: $txt_light-primary;
+                text-decoration: none;
+                font-size: .9rem;
+
+            }
+
+            .dropdown-menu {
+                @include listHeader;
+            }
+        }
+    }
+
+    .header_container {
+        // height: 100%;
+        width: 100%;
+        // @include displayFlex ();
+
+        .header_logo {
+            height: 100%;
+            padding: 20px 0;
+
+            img {
+                height: 100%;
+                aspect-ratio: 1;
+            }
+
+        }
+
+        .header_links {
+            height: 100%;
+
+            ul {
+                //@include displayFlex ();
+                height: 100%;
+                @include listHeader;
+
+                li {
+                    list-style-type: none;
+                    padding: 10px;
+                    height: 100%;
+                    //text-transform: uppercase;
+                    @include displayFlex (flex-start);
+
+
+                    &.active,
+                    &:hover {
+                        box-shadow: inset 0px -6px 0px 0px $color_primary;
+                    }
+
+                    // &.active a,
+                    // &:hover a {
+                    //     color: $color_primary;
+                    // }
+
+                    // a {
+                    //     text-decoration: none;
+                    //     font-weight: bold;
+                    //     color: $txt_link;
+                    // }
+
+                }
+            }
+        }
+
+        .form-floating {
+            .form-control {
+                // padding: 0;
+                background-color: transparent;
+                border: 0;
+                border-bottom: 3px solid $color_primary;
+                border-radius: 0;
+                text-align: end;
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+            label {
+                font-weight: 900;
+                color: $txt_link;
+                text-transform: capitalize;
+            }
+        }
+
+        span.input-group-text {
+            padding: 0;
+            background-color: transparent;
+            border: 0;
+            border-bottom: 3px solid $color_primary;
+            border-radius: 0;
+
+        }
+    }
+}
