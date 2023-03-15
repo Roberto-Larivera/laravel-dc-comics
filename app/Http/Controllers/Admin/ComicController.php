@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 //Models
 use App\Models\Comic;
+
 class ComicController extends Controller
 {
     /**
@@ -18,7 +19,7 @@ class ComicController extends Controller
     {
         $comics = Comic::all();
 
-        return view('Admin.comics.index',[
+        return view('admin.comics.index', [
             'comics' => $comics,
             'linkFooter' => config('footerLink')
         ]);
@@ -31,7 +32,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        return view('Admin.comics.create',[
+        return view('admin.comics.create', [
             'linkFooter' => config('footerLink')
         ]);
     }
@@ -45,19 +46,19 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        
+
         $newComic = new Comic;
-        $newComic -> title = $data['title_comic'];
-        $newComic -> description = $data['description_comic'];
-        $newComic -> url = $data['url_comic'];
-        $newComic -> price = $data['price_comic'];
-        $newComic -> series = $data['series_comic'];
-        $newComic -> sale_date = $data['sale_date_comic'];
-        $newComic -> type = $data['type_comic'];
-        $newComic -> save();
+        $newComic->title = $data['title_comic'];
+        $newComic->description = $data['description_comic'];
+        $newComic->url = $data['url_comic'];
+        $newComic->price = $data['price_comic'];
+        $newComic->series = $data['series_comic'];
+        $newComic->sale_date = $data['sale_date_comic'];
+        $newComic->type = $data['type_comic'];
+        $newComic->save();
 
 
-        return redirect()->route('comics.show',$newComic->id );
+        return redirect()->route('comics.show', $newComic->id);
     }
 
     /**
@@ -70,9 +71,8 @@ class ComicController extends Controller
     {
         $comic = Comic::findorFail($id);
 
-        return view('Admin.comics.show',[
-            'comic' => $comic,
-            'linkFooter' => config('footerLink')
+        return view('admin.comics.show', [
+            'comic' => $comic
         ]);
     }
 
@@ -84,7 +84,11 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::findorFail($id);
+
+        return view('admin.comics.edit', [
+            'comic' => $comic
+        ]);
     }
 
     /**
@@ -96,7 +100,13 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comic = Comic::findorFail($id);
+
+        $data = $request->all();
+
+        $comic->update($data);
+
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**

@@ -13,7 +13,7 @@
 <body>
     @yield('body_css')
 
-    @include('partials.header')
+    @include('partials.admin.header')
 
     @yield('body_main')
 

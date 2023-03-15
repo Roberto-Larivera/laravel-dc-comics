@@ -1,4 +1,4 @@
-@extends('layout.admin') {{-- estende in layout  --}}
+@extends('layout.admin.app') {{-- estende in layout  --}}
 
 @section('head_title')
     Laravel DC Comics | Create

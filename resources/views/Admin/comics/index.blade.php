@@ -1,4 +1,4 @@
-@extends('layout.admin') {{-- estende in layout  --}}
+@extends('layout.admin.app') {{-- estende in layout  --}}
 
 @section('head_title')
     Laravel DC Comics | Comics
@@ -8,16 +8,41 @@
     {{-- segnaposto dentro body  --}}
 
     <main>
-        <div class="container position-relative">
-            <div class="title-section position-absolute top-0 start-0">
-                <h2>current series</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Titolo</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Azioni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($comics as $comic)
+                                <tr>
+                                    <th scope="row">{{ $comic->id }}</th>
+                                    <td>{{ $comic->title }}</td>
+                                    <td>{{ $comic->type }}</td>
+                                    <td>
+                                        <a href="{{ route('comics.show',$comic->id) }}" class="btn btn-primary">
+                                            Vedi
+                                        </a>
+                                        <a href="{{ route('comics.edit',$comic->id) }}" class="btn btn-warning">
+                                            Aggiorna
+                                        </a>
+                                        <a href="#" class="btn btn-danger">
+                                            ?
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="series_boxs row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 gx-4 gy-5">
-                {{-- Include di Card --}}
-                @include('partials.card')
-            </div>
-            <button class="mt-5">load more</button>
         </div>
-
     </main>
 @endsection
