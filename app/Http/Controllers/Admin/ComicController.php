@@ -100,7 +100,7 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $comic = Comic::findorFail($id);
+        $comic = Comic::findOrFail($id);
 
         $data = $request->all();
 

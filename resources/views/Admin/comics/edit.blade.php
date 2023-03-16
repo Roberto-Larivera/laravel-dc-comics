@@ -11,7 +11,7 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col">
-                    <form action="{{ route('comics.update',['comic'=>$comic->id]) }}" method="POST" class="form_create">
+                    <form action="{{ route('comics.update',$comic->id) }}" method="POST" class="form_create">
                         @csrf
                         @method('PUT')
 
@@ -58,13 +58,13 @@
                         </div>
                         <div>
                             <button type="submit" class="btn btn-success me-4">Conferma</button>
+                        </form>
 
                             <a href="{{ route('comics.index', $comic->id) }}" class="btn btn-outline-primary me-5">
                                 Torna indietro
                             </a>
                             @include('admin.comics.partials.delete')
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

@@ -84,7 +84,7 @@
                             {{-- <p class="card-text">
                             <span class="fwbold">Writers<br> </span> {{ implode(', ', $comics['writers']) }}
                         </p> --}}
-                            <a class="btn btn-outline-warning me-4" href="#">Modifica</a>
+                            <a class="btn btn-outline-warning me-4" href="{{ route('comics.edit',$comic->id) }}">Modifica</a>
                             <a class="btn btn-outline-info" href="{{ route('comics.index') }}">Indietro</a>
                         </div>
                     </div>
