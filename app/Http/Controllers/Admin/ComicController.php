@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+// Validator
+// METODO 2 CON FUNZIONE A PARTE CON Validate::
+use Illuminate\Support\Facades\Validator;
+
 //Models
 use App\Models\Comic;
 
@@ -37,6 +41,33 @@ class ComicController extends Controller
         ]);
     }
 
+
+
+
+
+    // METODO 2 CON FUNZIONE A PARTE CON Validate::
+    private function validationData($data){
+        $data['price_comic']= str_replace(',', '.', $data['price_comic']);
+        $validator = Validator::make($data,[
+            'title_comic' => 'required|min:2|max:255',
+            'description_comic' => 'nullable',
+            'url_comic' => 'max:255|url',
+            'price_comic' => 'required|decimal:0,2|numeric|between:0,9999.99',
+            'series_comic' => 'required|min:2|max:60',
+            'sale_date_comic' => 'required|date',
+            'type_comic' => 'required|min:2|max:30',
+        ],[
+            // 'title_comic.required' => 'Il Titolo è OBBLIGATORIO!!!'
+        ])->validate();
+        return $validator;
+    }
+
+
+
+
+
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -45,17 +76,20 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title_comic' => 'required|min:2|max:255',
-            // 'description_comic' => 'required',
-            'url_comic' => 'max:255',
-            'price_comic' => 'required',
-            'series_comic' => 'required|min:2|max:60',
-            'sale_date_comic' => 'required',
-            'type_comic' => 'required|min:2|max:30',
-        ]);
+        // METODO 1 VALISAZIONE DIRETTA QUI
+            // $request->validate([
+            //     'title_comic' => 'required|min:2|max:255',
+            //     // 'description_comic' => 'required',
+            //     'url_comic' => 'max:255|url',
+            //     'price_comic' => 'required|decimal:2|numeric',
+            //     'series_comic' => 'required|min:2|max:60',
+            //     'sale_date_comic' => 'required|date',
+            //     'type_comic' => 'required|min:2|max:30',
+            // ]);
+            // $data = $request->all();
 
-        $data = $request->all();
+        // METODO 2 CON FUNZIONE A PARTE CON Validate::
+        $data = $this->validationData($request->all());
 
         $newComic = new Comic;
         $newComic->title = $data['title_comic'];
@@ -70,6 +104,13 @@ class ComicController extends Controller
 
         return redirect()->route('comics.show', $newComic->id);
     }
+
+
+
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -112,7 +153,28 @@ class ComicController extends Controller
     {
         $comic = Comic::findOrFail($id);
 
-        $data = $request->all();
+        // METODO 1 VALISAZIONE DIRETTA QUI
+            // $request->validate([
+            //     'title_comic' => 'required|min:2|max:255',
+            //     // 'description_comic' => 'required',
+            //     'url_comic' => 'max:255|url',
+            //     'price_comic' => 'required|decimal:2|numeric',
+            //     'series_comic' => 'required|min:2|max:60',
+            //     'sale_date_comic' => 'required|date',
+            //     'type_comic' => 'required|min:2|max:30',
+            // ]);
+            // $data = $request->all();
+
+        // METODO 2 CON FUNZIONE A PARTE CON Validate::
+        $data = $this->validationData($request->all());
+
+        $comic->title = $data['title_comic'];
+        $comic->description = $data['description_comic'];
+        $comic->url = $data['url_comic'];
+        $comic->price = $data['price_comic'];
+        $comic->series = $data['series_comic'];
+        $comic->sale_date = $data['sale_date_comic'];
+        $comic->type = $data['type_comic'];
 
         $comic->update($data);
 
