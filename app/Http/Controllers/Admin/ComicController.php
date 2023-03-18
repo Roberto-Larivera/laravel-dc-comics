@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 // METODO 2 CON FUNZIONE A PARTE CON Validate::
 use Illuminate\Support\Facades\Validator;
 
+// METODO 3 === App\Http\Requests\ValidationComicRequest 
+use App\Http\Requests\ValidationComicRequest;
+
 //Models
 use App\Models\Comic;
 
@@ -46,6 +49,7 @@ class ComicController extends Controller
 
 
     // METODO 2 CON FUNZIONE A PARTE CON Validate::
+    /*
     private function validationData($data){
         $data['price_comic']= str_replace(',', '.', $data['price_comic']);
         $validator = Validator::make($data,[
@@ -61,6 +65,7 @@ class ComicController extends Controller
         ])->validate();
         return $validator;
     }
+    */
 
 
 
@@ -74,23 +79,32 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+     // METODO 1 e 2
+    //public function store(Request $request)
+    // METODO 3 === App\Http\Requests\ValidationComicRequest 
+    public function store(ValidationComicRequest $request)
     {
         // METODO 1 VALISAZIONE DIRETTA QUI
-            // $request->validate([
-            //     'title_comic' => 'required|min:2|max:255',
-            //     // 'description_comic' => 'required',
-            //     'url_comic' => 'max:255|url',
-            //     'price_comic' => 'required|decimal:2|numeric',
-            //     'series_comic' => 'required|min:2|max:60',
-            //     'sale_date_comic' => 'required|date',
-            //     'type_comic' => 'required|min:2|max:30',
-            // ]);
-            // $data = $request->all();
+            /*
+            $request->validate([
+                'title_comic' => 'required|min:2|max:255',
+                // 'description_comic' => 'required',
+                'url_comic' => 'max:255|url',
+                'price_comic' => 'required|decimal:2|numeric',
+                'series_comic' => 'required|min:2|max:60',
+                'sale_date_comic' => 'required|date',
+                'type_comic' => 'required|min:2|max:30',
+            ]);
+            $data = $request->all();
+            */
 
         // METODO 2 CON FUNZIONE A PARTE CON Validate::
-        $data = $this->validationData($request->all());
+        //$data = $this->validationData($request->all());
 
+        // METODO 3 === App\Http\Requests\ValidationComicRequest 
+        $data = $request->all();
+        
         $newComic = new Comic;
         $newComic->title = $data['title_comic'];
         $newComic->description = $data['description_comic'];
@@ -149,25 +163,35 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+
+    // METODO 1 e 2
+    //public function update(Request $request, $id)
+    // METODO 3 === App\Http\Requests\ValidationComicRequest 
+    public function update(ValidationComicRequest $request, $id)
     {
         $comic = Comic::findOrFail($id);
 
         // METODO 1 VALISAZIONE DIRETTA QUI
-            // $request->validate([
-            //     'title_comic' => 'required|min:2|max:255',
-            //     // 'description_comic' => 'required',
-            //     'url_comic' => 'max:255|url',
-            //     'price_comic' => 'required|decimal:2|numeric',
-            //     'series_comic' => 'required|min:2|max:60',
-            //     'sale_date_comic' => 'required|date',
-            //     'type_comic' => 'required|min:2|max:30',
-            // ]);
-            // $data = $request->all();
+           /*
+            $request->validate([
+                'title_comic' => 'required|min:2|max:255',
+                // 'description_comic' => 'required',
+                'url_comic' => 'max:255|url',
+                'price_comic' => 'required|decimal:2|numeric',
+                'series_comic' => 'required|min:2|max:60',
+                'sale_date_comic' => 'required|date',
+                'type_comic' => 'required|min:2|max:30',
+            ]);
+            $data = $request->all();
+            */
 
         // METODO 2 CON FUNZIONE A PARTE CON Validate::
-        $data = $this->validationData($request->all());
+        //$data = $this->validationData($request->all());
 
+         // METODO 3 === App\Http\Requests\ValidationComicRequest 
+         $data = $request->all();
+         
         $comic->title = $data['title_comic'];
         $comic->description = $data['description_comic'];
         $comic->url = $data['url_comic'];
