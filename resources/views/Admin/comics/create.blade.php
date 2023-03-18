@@ -84,12 +84,12 @@
                         <div class="mb-3">
                             <label for="price_comic" class="form-label @error('price_comic') text-danger @enderror">prezzo *</label>
                             <input 
-                            type="numeric" 
+                            type="number" 
                             class="form-control @error('price_comic') is-invalid @enderror" 
                             name="price_comic" 
                             id="price_comic"
                             placeholder="Scrivi il prezzo del Comic" 
-                            maxlength="9" 
+                            step="0.01" max="9999.99"
                             value="{{ old('price_comic') }}"
                             required
                             >

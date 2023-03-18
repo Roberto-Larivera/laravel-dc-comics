@@ -21,13 +21,24 @@ class ValidationComicRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
+
+
+     /*
+
+        DI SOLITO SI HANNO DELLE VALIDAZIONI DIVERSE PER IL STORE E IL UPDATE
+
+        >   StoreComicRequest
+        >   UpdateComicRequest
+
+     */
+
     public function rules()
     {
         return [
             'title_comic' => 'required|min:2|max:255',
             'description_comic' => 'nullable',
             'url_comic' => 'max:255|url',
-            'price_comic' => 'required|decimal:0,2|numeric|between:0,9999.99',
+            'price_comic' => 'required|numeric|between:0,9999.99',
             'series_comic' => 'required|min:2|max:60',
             'sale_date_comic' => 'required|date',
             'type_comic' => 'required|min:2|max:30',
